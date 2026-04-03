@@ -14,7 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // ab sever json format read kr skta hai
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "https://smart-knowladge-brain-app.onrender.com",
+      "chrome-extension://nenpioffidjcfjjpbkldllcoenbcangn",
+    ],
     credentials: true,
   }),
 );
@@ -35,7 +38,6 @@ app.use("/api/ai", aiRouter);
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
-
 
 app.use(errorMiddleware);
 export default app;
